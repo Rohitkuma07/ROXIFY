@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ROXIFY</string>
+    <string name="app_tagline">Feel Every Beat</string>
+    <string name="playback_channel_name">Playback</string>
+    <string name="playback_channel_desc">Music playback controls</string>
+</resources>

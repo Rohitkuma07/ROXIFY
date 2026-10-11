@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Base window theme. The actual colours/typography are provided by Compose
+      (see ui/theme/Theme.kt); this only styles the window before Compose draws so the
+      launch never flashes a light background.
+    -->
+    <style name="Theme.Roxify" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/roxify_black</item>
+        <item name="android:colorBackground">@color/roxify_black</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+</resources>

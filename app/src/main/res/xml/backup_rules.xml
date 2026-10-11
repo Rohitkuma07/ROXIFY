@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- The library itself is re-scanned from the device; no need to back up the DB. -->
+    <exclude domain="database" path="roxify.db" />
+    <exclude domain="sharedpref" path="roxify_settings.preferences_pb" />
+</full-backup-content>
