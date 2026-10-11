@@ -80,8 +80,12 @@ To enable real streaming, implement `OnlineMusicProvider` for a licensed source
 (e.g. Jamendo / Deezer / your own licensed CDN) and provide its **server-issued token at
 build time** — never in source:
 
+The property name is **`ROXIFY_ONLINE_TOKEN`**. On the command line you write it as the
+Gradle flag `-P` immediately followed by the property name (no space), which is why it
+looks like "PROXIFY":
+
 ```bash
-# -P ROXIFY_ONLINE_TOKEN=...   (shown here as it is usually written, without the space)
+# -P  +  ROXIFY_ONLINE_TOKEN=...   (no space between -P and the name)
 ./gradlew assembleRelease -PROXIFY_ONLINE_TOKEN="<server-issued-token>"
 ```
 

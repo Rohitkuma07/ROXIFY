@@ -30,7 +30,10 @@ android {
 
         // Online catalogue credentials are NEVER hard-coded in the client. When a
         // licensed provider is wired up, its token must be injected at build time via
-        // -PROXIFY_ONLINE_TOKEN=... (see README "Online music"). Empty = offline mode.
+        // Online catalogue token, injected at build time via the Gradle property
+        // ROXIFY_ONLINE_TOKEN (CLI: the flag -P immediately followed by the property
+        // name, i.e. -PROXIFY_ONLINE_TOKEN=...). See README "Online music".
+        // Empty = offline mode.
         val onlineToken = (project.findProperty("ROXIFY_ONLINE_TOKEN") as String?) ?: ""
         buildConfigField("String", "ROXIFY_ONLINE_TOKEN", "\"$onlineToken\"")
     }
