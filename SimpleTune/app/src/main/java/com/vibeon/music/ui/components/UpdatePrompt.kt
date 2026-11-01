@@ -48,7 +48,7 @@ fun UpdatePromptHost(api: SocialApiClient) {
                 title = { Text("Update available", color = VibeOnText) },
                 text = {
                     Text(
-                        "VibeOn ${tag.trimStart('v')} is available. You're on ${BuildConfig.VERSION_NAME}.",
+                        "ROXIFY ${tag.trimStart('v')} is available. You're on ${BuildConfig.VERSION_NAME}.",
                         color = VibeOnTextMuted,
                     )
                 },

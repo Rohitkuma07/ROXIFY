@@ -111,7 +111,7 @@ export default function FriendsScreen() {
       <GradientView colors={Gradients.brandMuted} style={styles.header}>
         <View style={styles.headerRow}>
           <View>
-            <Text style={styles.brand}>VibeOn</Text>
+            <Text style={styles.brand}>ROXIFY</Text>
             <Text style={styles.headerTitle}>Friends</Text>
           </View>
           <View style={styles.headerActions}>

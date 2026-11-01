@@ -233,7 +233,7 @@ class SocialApiClient @Inject constructor(
             runCatching {
                 val response = http.get("https://api.github.com/repos/kishor-dev-970/VibeOn/releases/latest") {
                     header("Accept", "application/vnd.github+json")
-                    header("User-Agent", "VibeOn")
+                    header("User-Agent", "ROXIFY")
                 }
                 if (!response.status.isSuccess()) return@runCatching null
                 val body = json.decodeFromString<kotlinx.serialization.json.JsonObject>(response.bodyAsText())

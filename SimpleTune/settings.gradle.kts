@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "VibeOn"
+rootProject.name = "ROXIFY"
 include(":app")

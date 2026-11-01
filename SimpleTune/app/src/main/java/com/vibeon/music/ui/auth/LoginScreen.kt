@@ -79,7 +79,7 @@ fun LoginScreen(
             }
             Spacer(Modifier.height(24.dp))
             Text(
-                text = "VibeOn",
+                text = "ROXIFY",
                 color = VibeOnText,
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.ExtraBold,

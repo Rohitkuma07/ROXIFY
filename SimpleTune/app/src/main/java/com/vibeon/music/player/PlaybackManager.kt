@@ -83,7 +83,7 @@ class PlaybackManager @Inject constructor(
 
     val player: ExoPlayer by lazy {
         val dataSourceFactory = DefaultHttpDataSource.Factory()
-            .setUserAgent("VibeOn/${com.vibeon.music.BuildConfig.VERSION_NAME} (Android)")
+            .setUserAgent("ROXIFY/${com.vibeon.music.BuildConfig.VERSION_NAME} (Android)")
             .setAllowCrossProtocolRedirects(true)
         // Muxed (progressive) streams contain a video track; without a surface the
         // video renderer stalls the player, so select audio-only tracks.

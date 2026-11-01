@@ -9,7 +9,7 @@ import { checkForUpdate, installedVersion, isNewerVersion } from '../lib/update'
 import { Colors, BorderRadius, Spacing } from '../lib/theme';
 
 const GITHUB_LINK = 'https://github.com/kishor-dev-970/VibeOn/releases/latest';
-const APP_NAME = 'VibeOn';
+const APP_NAME = 'ROXIFY';
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -52,7 +52,7 @@ export default function SettingsScreen() {
     if (update && isNewerVersion(update.latestVersion, installed)) {
       Alert.alert(
         `Update available · v${update.latestVersion}`,
-        `You have v${installed}. Download the latest VibeOn now?`,
+        `You have v${installed}. Download the latest ROXIFY now?`,
         [
           { text: 'Later', style: 'cancel' },
           { text: 'Download', onPress: () => Linking.openURL(update!.downloadUrl).catch(() => {}) },

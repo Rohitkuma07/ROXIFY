@@ -84,7 +84,7 @@ fun FriendsScreen(
                 )
                 Spacer(Modifier.width(8.dp))
                 Text(
-                    text = "VibeOn",
+                    text = "ROXIFY",
                     color = VibeOnPrimaryLight,
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.ExtraBold,
@@ -121,7 +121,7 @@ fun FriendsScreen(
 
             when {
                 loading && friends.isEmpty() -> LoadingIndicator()
-                friends.isEmpty() -> EmptyState("No friends yet. Everyone on VibeOn is a friend.")
+                friends.isEmpty() -> EmptyState("No friends yet. Everyone on ROXIFY is a friend.")
                 else -> LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 16.dp, vertical = 8.dp),

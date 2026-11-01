@@ -45,7 +45,7 @@ export default function LoginScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <Text style={styles.musicNote}>♫</Text>
-      <Text style={styles.title}>VibeOn</Text>
+      <Text style={styles.title}>ROXIFY</Text>
       <Text style={styles.subtitle}>
         Enter your name to join.{'\n'}Everyone in the app can see what you&apos;re playing.
       </Text>

@@ -39,7 +39,7 @@ jobs:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
 
-      - name: Build VibeOn APK
+      - name: Build ROXIFY APK
         run: ./gradlew :app:assembleDebug --no-daemon
 
       - name: Get version
@@ -48,7 +48,7 @@ jobs:
 
       - name: Rename APK
         working-directory: SimpleTune
-        run: mv app/build/outputs/apk/debug/app-debug.apk "../VibeOn_${{ steps.version.outputs.tag }}.apk"
+        run: mv app/build/outputs/apk/debug/app-debug.apk "../ROXIFY_${{ steps.version.outputs.tag }}.apk"
 
       - name: Clean stale release assets
         run: |
@@ -56,7 +56,7 @@ jobs:
           rel_api="https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/${tag}"
           rel_url=$(curl -sS -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" "${rel_api}" | jq -r '.url // empty')
           if [ -n "${rel_url}" ]; then
-            for id in $(curl -sS -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "${rel_url}/assets" | jq -r --arg keep "VibeOn_${tag}.apk" '.[] | select(.name != $keep) | .id'); do
+            for id in $(curl -sS -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "${rel_url}/assets" | jq -r --arg keep "ROXIFY_${tag}.apk" '.[] | select(.name != $keep) | .id'); do
               curl -sS -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "${rel_url}/assets/${id}"
             done
           fi
@@ -67,4 +67,4 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag }}
           name: ${{ steps.version.outputs.tag }}
           body: "Release ${{ steps.version.outputs.tag }}"
-          files: VibeOn_${{ steps.version.outputs.tag }}.apk
+          files: ROXIFY_${{ steps.version.outputs.tag }}.apk

@@ -94,7 +94,7 @@ fun HomeScreen(
                         )
                         Spacer(Modifier.width(8.dp))
                         Text(
-                            text = "VibeOn",
+                            text = "ROXIFY",
                             color = VibeOnPrimaryLight,
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.ExtraBold,

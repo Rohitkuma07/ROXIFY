@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">VibeOn</string>
+  <string name="app_name">ROXIFY</string>
   <string name="notification_loading">Loading audio…</string>
   <string name="notification_text_audio">Playing audio</string>
   <string name="playback_channel">Audio Playback</string>

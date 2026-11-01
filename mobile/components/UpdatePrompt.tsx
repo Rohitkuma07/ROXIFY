@@ -19,7 +19,7 @@ export default function UpdatePrompt() {
           </View>
           <Text style={styles.title}>Update available</Text>
           <Text style={styles.subtitle}>
-            Version <Text style={styles.version}>{update.latestVersion}</Text> of VibeOn is ready.
+            Version <Text style={styles.version}>{update.latestVersion}</Text> of ROXIFY is ready.
             Download and install it to keep listening with the latest fixes.
           </Text>
           {!!update.notes && (

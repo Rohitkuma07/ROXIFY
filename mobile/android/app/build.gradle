@@ -138,7 +138,7 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             if (variant.buildType.name == "release") {
-                output.outputFileName = "VibeOn_v${defaultConfig.versionName}.apk"
+                output.outputFileName = "ROXIFY_v${defaultConfig.versionName}.apk"
             } else {
                 output.outputFileName = "app-${variant.buildType.name}-${defaultConfig.versionName}.apk"
             }

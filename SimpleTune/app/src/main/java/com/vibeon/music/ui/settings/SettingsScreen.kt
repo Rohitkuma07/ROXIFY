@@ -143,12 +143,12 @@ fun SettingsScreen(
                         icon = "📣",
                         label = "Invite Friends",
                         onClick = {
-                            val message = "Join me on VibeOn! My user code is ${user?.code ?: ""}. Listen to music together. Download the app: $GITHUB_RELEASES_URL"
+                            val message = "Join me on ROXIFY! My user code is ${user?.code ?: ""}. Listen to music together. Download the app: $GITHUB_RELEASES_URL"
                             val intent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
                                 putExtra(Intent.EXTRA_TEXT, message)
                             }
-                            ContextCompat.startActivity(context, Intent.createChooser(intent, "Invite to VibeOn"), null)
+                            ContextCompat.startActivity(context, Intent.createChooser(intent, "Invite to ROXIFY"), null)
                         },
                     )
                     RowDivider()
@@ -156,7 +156,7 @@ fun SettingsScreen(
                         icon = "💬",
                         label = "Share on WhatsApp",
                         onClick = {
-                            val msg = Uri.encode("Join me on VibeOn! My user code is ${user?.code ?: ""}. Listen to music together. Download the app: $GITHUB_RELEASES_URL")
+                            val msg = Uri.encode("Join me on ROXIFY! My user code is ${user?.code ?: ""}. Listen to music together. Download the app: $GITHUB_RELEASES_URL")
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("whatsapp://send?text=$msg"))
                             runCatching { context.startActivity(intent) }
                         },
@@ -257,7 +257,7 @@ fun SettingsScreen(
                 SectionLabel("ABOUT")
                 SettingsCard {
                     Text(
-                        text = "VibeOn",
+                        text = "ROXIFY",
                         color = VibeOnText,
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,

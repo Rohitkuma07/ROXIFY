@@ -46,7 +46,7 @@ export async function installedVersion(): Promise<string> {
 export async function checkForUpdate(): Promise<UpdateInfo | null> {
   try {
     const res = await fetch(RELEASES_API, {
-      headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'VibeOn' },
+      headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'ROXIFY' },
     });
     if (!res.ok) return null;
     const json = await res.json();

@@ -152,7 +152,7 @@ object MediaNotificationManager {
             if (nm.getNotificationChannel(CHANNEL_ID) == null) {
                 val channel = NotificationChannel(
                     CHANNEL_ID,
-                    "VibeOn Media Playback",
+                    "ROXIFY Media Playback",
                     NotificationManager.IMPORTANCE_LOW
                 ).apply {
                     description = "Playback controls and lock screen media card"
@@ -224,7 +224,7 @@ object MediaNotificationManager {
         val metaBuilder = MediaMetadataCompat.Builder()
             .putString(MediaMetadataCompat.METADATA_KEY_TITLE, currentTitle)
             .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, currentArtist)
-            .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, "VibeOn")
+            .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, "ROXIFY")
             .putString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID, videoId)
 
         if (cachedArtworkUrl == thumbnailUrl && cachedArtworkBitmap != null) {
@@ -252,7 +252,7 @@ object MediaNotificationManager {
                             val updatedMeta = MediaMetadataCompat.Builder()
                                 .putString(MediaMetadataCompat.METADATA_KEY_TITLE, currentTitle)
                                 .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, currentArtist)
-                                .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, "VibeOn")
+                                .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, "ROXIFY")
                                 .putString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID, currentVideoId)
                                 .putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, bmp)
                                 .putBitmap(MediaMetadataCompat.METADATA_KEY_DISPLAY_ICON, bmp)
@@ -322,9 +322,9 @@ object MediaNotificationManager {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setStyle(mediaStyle)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle(currentTitle.ifBlank { "VibeOn" })
+            .setContentTitle(currentTitle.ifBlank { "ROXIFY" })
             .setContentText(currentArtist.ifBlank { "YouTube Music" })
-            .setSubText("VibeOn")
+            .setSubText("ROXIFY")
             .setContentIntent(contentIntent)
             .setDeleteIntent(stopIntent)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
