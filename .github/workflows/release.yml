@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build, e.g. 2.0.4'
+        required: true
+        default: '2.0.4'
 
 jobs:
   build:
@@ -27,36 +33,48 @@ jobs:
         run: chmod +x gradlew
 
       - name: Restore signing keystore
-        run: |
-          if [ -n "${KEYSTORE_BASE64:-}" ]; then
-            mkdir -p keystore
-            echo "$KEYSTORE_BASE64" | base64 -d > keystore/vibeon.jks
-            printf 'storeFile=vibeon.jks\nstorePassword=%s\nkeyAlias=vibeon\nkeyPassword=%s\n' "$KEYSTORE_PASSWORD" "$KEYSTORE_PASSWORD" > keystore/key.properties
-          else
-            echo "No keystore secrets set; falling back to default debug signing"
-          fi
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "${KEYSTORE_BASE64:-}" ] || [ -z "${KEYSTORE_PASSWORD:-}" ]; then
+            echo "::error::Missing repository secrets KEYSTORE_BASE64 and/or KEYSTORE_PASSWORD. A signed release APK cannot be produced without them."
+            exit 1
+          fi
+          mkdir -p keystore
+          printf '%s' "$KEYSTORE_BASE64" | base64 -d > keystore/roxify.jks
+          printf 'storeFile=roxify.jks\nstorePassword=%s\nkeyAlias=roxify\nkeyPassword=%s\n' \
+            "$KEYSTORE_PASSWORD" "$KEYSTORE_PASSWORD" > keystore/key.properties
 
-      - name: Build ROXIFY APK
-        run: ./gradlew :app:assembleDebug --no-daemon
-
-      - name: Get version
+      - name: Resolve version
         id: version
-        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            tag="v${INPUT_VERSION#v}"
+          else
+            tag="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Build signed release APK
+        run: ./gradlew :app:assembleRelease --no-daemon "-PVIBEON_VERSION_NAME=${{ steps.version.outputs.version }}"
 
       - name: Rename APK
         working-directory: SimpleTune
-        run: mv app/build/outputs/apk/debug/app-debug.apk "../ROXIFY_${{ steps.version.outputs.tag }}.apk"
+        run: mv app/build/outputs/apk/release/app-release.apk "../ROXIFY_${{ steps.version.outputs.tag }}.apk"
 
       - name: Clean stale release assets
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
         run: |
-          tag="${GITHUB_REF#refs/tags/}"
-          rel_api="https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/${tag}"
+          rel_api="https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}"
           rel_url=$(curl -sS -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" "${rel_api}" | jq -r '.url // empty')
           if [ -n "${rel_url}" ]; then
-            for id in $(curl -sS -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "${rel_url}/assets" | jq -r --arg keep "ROXIFY_${tag}.apk" '.[] | select(.name != $keep) | .id'); do
+            for id in $(curl -sS -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "${rel_url}/assets" | jq -r --arg keep "ROXIFY_${TAG}.apk" '.[] | select(.name != $keep) | .id'); do
               curl -sS -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "${rel_url}/assets/${id}"
             done
           fi

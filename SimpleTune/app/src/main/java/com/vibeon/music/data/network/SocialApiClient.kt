@@ -3,6 +3,7 @@ package com.vibeon.music.data.network
 import com.vibeon.music.BuildConfig
 import com.vibeon.music.data.settings.SettingsRepository
 import com.vibeon.music.domain.model.Song
+import com.vibeon.music.util.ROXIFY_GITHUB_REPO
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.okhttp.OkHttp
@@ -231,7 +232,7 @@ class SocialApiClient @Inject constructor(
     suspend fun latestReleaseTag(): String? =
         withContext(io) {
             runCatching {
-                val response = http.get("https://api.github.com/repos/kishor-dev-970/VibeOn/releases/latest") {
+                val response = http.get("https://api.github.com/repos/$ROXIFY_GITHUB_REPO/releases/latest") {
                     header("Accept", "application/vnd.github+json")
                     header("User-Agent", "ROXIFY")
                 }

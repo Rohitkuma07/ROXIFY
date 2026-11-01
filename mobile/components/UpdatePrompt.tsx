@@ -1,6 +1,7 @@
 import { Linking, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import GradientView from './GradientView';
 import { useUpdate } from '../lib/useUpdate';
+import { RELEASES_PAGE } from '../lib/update';
 import { Colors, BorderRadius, Spacing, Glass, Gradients, Shadows } from '../lib/theme';
 
 export default function UpdatePrompt() {
@@ -32,7 +33,7 @@ export default function UpdatePrompt() {
               <Text style={styles.primaryText}>Download & Install</Text>
             </GradientView>
           </Pressable>
-          <Pressable onPress={() => Linking.openURL('https://github.com/kishor-dev-970/VibeOn/releases/latest').catch(() => {})} hitSlop={8}>
+          <Pressable onPress={() => Linking.openURL(RELEASES_PAGE).catch(() => {})} hitSlop={8}>
             <Text style={styles.link}>See release notes on GitHub</Text>
           </Pressable>
           <Pressable onPress={dismiss} hitSlop={8}>

@@ -22,7 +22,7 @@
       }
     },
     "android": {
-      "package": "com.example.socialmusic",
+      "package": "com.roxify.socialmusic",
       "versionCode": 42,
       "adaptiveIcon": {
         "backgroundColor": "#0A0718",

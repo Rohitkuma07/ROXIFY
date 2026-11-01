@@ -38,7 +38,9 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.vibeon.music"
+        // Unique install identity so ROXIFY can coexist with VibeOn.
+        // The Kotlin namespace stays com.vibeon.music to avoid moving sources.
+        applicationId = "com.roxify.music"
         minSdk = 29
         targetSdk = 36
         versionCode = 5

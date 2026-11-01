@@ -89,7 +89,7 @@ android {
 
     namespace 'com.example.socialmusic'
     defaultConfig {
-        applicationId 'com.example.socialmusic'
+        applicationId 'com.roxify.socialmusic'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 42

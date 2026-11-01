@@ -1,6 +1,10 @@
 package com.vibeon.music.util
 
-const val GITHUB_RELEASES_URL = "https://github.com/kishor-dev-970/VibeOn/releases/latest"
+// Replace CHANGE-ME with the GitHub owner that hosts the ROXIFY repository.
+// Everything else (release page + API) is derived from this single value.
+const val ROXIFY_GITHUB_REPO = "CHANGE-ME/ROXIFY"
+
+const val GITHUB_RELEASES_URL = "https://github.com/" + ROXIFY_GITHUB_REPO + "/releases/latest"
 
 /**
  * True when [latest] is a higher semantic version than [current], e.g. "v2.0.3" > "v2.0.2".

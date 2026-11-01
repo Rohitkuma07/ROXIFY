@@ -5,10 +5,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useAuth } from '../context/AuthContext';
 import { usePlayer } from '../context/PlayerContext';
-import { checkForUpdate, installedVersion, isNewerVersion } from '../lib/update';
+import { checkForUpdate, installedVersion, isNewerVersion, RELEASES_PAGE } from '../lib/update';
 import { Colors, BorderRadius, Spacing } from '../lib/theme';
 
-const GITHUB_LINK = 'https://github.com/kishor-dev-970/VibeOn/releases/latest';
 const APP_NAME = 'ROXIFY';
 
 export default function SettingsScreen() {
@@ -24,14 +23,14 @@ export default function SettingsScreen() {
   const inviteFacebook = async () => {
     try {
       await Share.share({
-        message: `Join me on ${APP_NAME}! My user code is ${user?.code}. Listen to music together. Download the app: ` + GITHUB_LINK,
+        message: `Join me on ${APP_NAME}! My user code is ${user?.code}. Listen to music together. Download the app: ` + RELEASES_PAGE,
         title: `Invite to ${APP_NAME}`,
       });
     } catch {}
   };
 
   const inviteWhatsApp = () => {
-    const msg = encodeURIComponent(`Join me on ${APP_NAME}! My user code is ${user?.code}. Listen to music together. Download the app: ` + GITHUB_LINK);
+    const msg = encodeURIComponent(`Join me on ${APP_NAME}! My user code is ${user?.code}. Listen to music together. Download the app: ` + RELEASES_PAGE);
     Linking.openURL(`whatsapp://send?text=${msg}`).catch(() =>
       Alert.alert('WhatsApp not installed')
     );
