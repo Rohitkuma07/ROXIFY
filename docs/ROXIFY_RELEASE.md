@@ -16,11 +16,12 @@ same `owner/repo` in both places:
 | `SimpleTune/app/src/main/java/com/vibeon/music/util/AppUpdate.kt` | `ROXIFY_GITHUB_REPO` |
 | `mobile/lib/update.ts` | `REPO` |
 
-Example: `const val ROXIFY_GITHUB_REPO = "yourname/ROXIFY-CLONE"`.
+Both are set to `Rohitkuma07/ROXIFY`.
 
-> Do **not** use `Rohitkuma07/ROXIFY` unless you intend to replace that repository.
-> It currently hosts a different, offline-first player, and its releases contain that
-> app — the updater would download the wrong APK.
+> This repository currently hosts an older, different offline-first player (v1.0.0).
+> Pushing this clone replaces that code. The old `v1.0.0` release stays until you
+> delete it; the updater only offers versions newer than the installed one, so a 2.x
+> build will never be offered the old APK.
 
 The release URL and GitHub API URL are derived from this one value.
 
@@ -50,8 +51,10 @@ To use your own key instead, replace the keystore with one whose alias is `roxif
 ## 3. Push the code
 
 ```bash
-git remote add origin https://github.com/<owner>/<repo>.git
-git push -u origin main
+git remote add origin https://github.com/Rohitkuma07/ROXIFY.git
+# The existing repo has unrelated history, so the first push must be forced.
+# This replaces the old offline-first code on main (existing releases are kept).
+git push --force origin main
 ```
 
 ---

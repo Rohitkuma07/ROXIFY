@@ -1,8 +1,8 @@
 package com.vibeon.music.util
 
-// Replace CHANGE-ME with the GitHub owner that hosts the ROXIFY repository.
-// Everything else (release page + API) is derived from this single value.
-const val ROXIFY_GITHUB_REPO = "CHANGE-ME/ROXIFY"
+// Repository that hosts ROXIFY releases. Everything else (release page + API)
+// is derived from this single value.
+const val ROXIFY_GITHUB_REPO = "Rohitkuma07/ROXIFY"
 
 const val GITHUB_RELEASES_URL = "https://github.com/" + ROXIFY_GITHUB_REPO + "/releases/latest"
 

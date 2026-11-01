@@ -10,9 +10,9 @@ export interface UpdateInfo {
   publishedAt: string;
 }
 
-// Replace CHANGE-ME with the GitHub owner that hosts the ROXIFY repository.
-// Everything else (release page + API) is derived from this single value.
-const REPO = 'CHANGE-ME/ROXIFY';
+// Repository that hosts ROXIFY releases. Everything else (release page + API)
+// is derived from this single value.
+const REPO = 'Rohitkuma07/ROXIFY';
 const RELEASES_API = `https://api.github.com/repos/${REPO}/releases/latest`;
 export const RELEASES_PAGE = `https://github.com/${REPO}/releases/latest`;
 
